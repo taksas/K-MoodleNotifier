@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace K_MoodleNotifier.ViewModels
@@ -18,6 +19,7 @@ namespace K_MoodleNotifier.ViewModels
         public Command<Item> ItemTapped { get; }
 
         public Command LoginCommand { get; }
+        public Command CheckCommand { get; } //willbedel
 
         public ItemsViewModel()
         {
@@ -30,6 +32,7 @@ namespace K_MoodleNotifier.ViewModels
             AddItemCommand = new Command(OnAddItem);
 
             LoginCommand = new Command(OnLoginClicked);
+            CheckCommand = new Command(OnCheckClicked); //willbedel
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -91,7 +94,11 @@ namespace K_MoodleNotifier.ViewModels
         {
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
-
+        private async void OnCheckClicked(object obj)
+        {
+            var text = await SecureStorage.GetAsync("text");
+            var description = await SecureStorage.GetAsync("desctiption");
+        }
 
 
     }
