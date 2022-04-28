@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="K_MoodleNotifier.Views.ItemsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:K_MoodleNotifier.ViewModels"  
+             xmlns:model="clr-namespace:K_MoodleNotifier.Models"  
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Button  Text="Login" Command="{Binding LoginCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
