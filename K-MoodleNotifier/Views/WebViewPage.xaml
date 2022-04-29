@@ -5,11 +5,17 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="月別"  Clicked="Refresh" />
-        <ToolbarItem Text="日別"  Clicked="Refresh" />
-        <ToolbarItem Text="直近"  Clicked="Refresh" />
-        <ToolbarItem Icon="icon_home2.png" Clicked="Refresh" />
+        <ToolbarItem Text="月別"  Clicked="Tsukibetsu" />
+        <ToolbarItem Text="直近"  Clicked="Tyokkin" />
+        <ToolbarItem Text="今日"  Clicked="Nichibetsu" />
+        <ToolbarItem Icon="refresh.png" Clicked="Refresh" />
     </ContentPage.ToolbarItems>
 
-    <WebView x:Name="webView" />
+    <StackLayout>
+        <!--Loading label should not render by default.-->
+
+
+        <Label x:Name="labelLoading" Text="読み込み中..." IsVisible="false" HorizontalTextAlignment="Center" />
+        <WebView x:Name="webView" HeightRequest="1000" WidthRequest="1000" Navigated="webviewNavigated" Navigating="webviewNavigating" />
+    </StackLayout>
 </ContentPage>

@@ -15,12 +15,38 @@ public partial class WebViewPage : ContentPage
     public WebViewPage()
     {
             InitializeComponent();
-            webView.Source = "http://xamarin.com";
+            webView.Source = "https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=upcoming";
     }
-
+        
         void Refresh(object sender, System.EventArgs e)
         {
             webView.Reload();
         }
+
+        void Tsukibetsu(object sender, System.EventArgs e)
+        {
+            webView.Source = "https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=month";
+        }
+        void Nichibetsu(object sender, System.EventArgs e)
+        {
+            webView.Source = "https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=day";
+        }
+        void Tyokkin(object sender, System.EventArgs e)
+        {
+            webView.Source = "https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=upcoming";
+        }
+
+
+        
+        void webviewNavigating(object sender, WebNavigatingEventArgs e)
+        {
+            labelLoading.IsVisible = true;
+        }
+
+        void webviewNavigated(object sender, WebNavigatedEventArgs e)
+        {
+            labelLoading.IsVisible = false;
+        }
+        
     }
 }
