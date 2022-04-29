@@ -5,6 +5,9 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using System.Diagnostics;
+using System.Net;
+using AngleSharp;
 
 namespace K_MoodleNotifier.ViewModels
 {
@@ -50,10 +53,17 @@ namespace K_MoodleNotifier.ViewModels
 
         private async void OnSave()
         {
-            await SecureStorage.SetAsync("text", "description");
+            await SecureStorage.SetAsync("text", Text);
+            await SecureStorage.SetAsync("desc", Description);
+
+            var text1 = await SecureStorage.GetAsync("text");
+            var description1 = await SecureStorage.GetAsync("desc");
+
+            
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
+
         }
     }
 }

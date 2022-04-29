@@ -4,6 +4,7 @@ using K_MoodleNotifier.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,19 +15,18 @@ namespace K_MoodleNotifier.Views
 {
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel _viewModel;
+
 
         public ItemsPage()
         {
             InitializeComponent();
-
-            BindingContext = _viewModel = new ItemsViewModel();
+            
         }
 
-        protected override void OnAppearing()
+
+        void LoginCommand(object sender, System.EventArgs e)
         {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
+            Shell.Current.GoToAsync(nameof(NewItemPage));
         }
     }
 }

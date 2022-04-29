@@ -7,13 +7,9 @@
              xmlns:model="clr-namespace:K_MoodleNotifier.Models"  
              x:Name="BrowseItemsPage">
 
-    <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button  Text="Login" Command="{Binding LoginCommand}"/>
-            <Button  Text="Check" Command="{Binding CheckCommand}"/>
-            <Label Text="Start developing now" FontSize="Title"/>
-            <Label Text="Start developing now" FontSize="Title"/>
-        </StackLayout>
-    </ContentPage.Content>
+
+            <Button  Text="Moodleのログイン情報を設定" Clicked="LoginCommand"/>
+
+
     
 </ContentPage>

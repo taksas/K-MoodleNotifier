@@ -31,6 +31,7 @@
 
     <TabBar>
         <ShellContent Title="ホーム" Icon="icon_home2.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent  Title="カレンダー" Icon="icon_settings2.png" ContentTemplate="{DataTemplate local:WebViewPage}" />
         <ShellContent  Route="ItemsPage" Title="設定" Icon="icon_settings2.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
         <ShellContent Title="情報" Icon="icon_info2.png" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>

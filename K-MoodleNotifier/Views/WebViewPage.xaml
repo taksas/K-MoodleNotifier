@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="K_MoodleNotifier.Views.WebViewPage">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="月別"  Command="{Binding TsukiCommand}" />
+        <ToolbarItem Text="日別"  Command="{Binding NichiCommand}" />
+        <ToolbarItem Text="直近"  Command="{Binding TyokkinCommand}" />
+        <ToolbarItem Icon="icon_home2.png" Command="{Binding RefreshCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <WebView x:Name="webView" />
+</ContentPage>
