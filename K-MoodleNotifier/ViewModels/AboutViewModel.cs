@@ -32,6 +32,7 @@ namespace K_MoodleNotifier.ViewModels
 
 
 
+        public Command Refreshing { get; }
 
 
 
@@ -42,16 +43,18 @@ namespace K_MoodleNotifier.ViewModels
             StartWebCommand = new Command(button1_Click);
 
 
-
-
+            Refreshing = new Command(OnRefreshing);
         }
 
 
 
 
 
-
-
+        private async void OnRefreshing(object obj)
+        {
+            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
+            await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+        }
 
 
 
@@ -62,6 +65,7 @@ namespace K_MoodleNotifier.ViewModels
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
         }
+
 
         private async void button1_Click(object obj)
         {
