@@ -18,24 +18,9 @@ public partial class WebViewPage : ContentPage
             webView.Source = "http://xamarin.com";
     }
 
-        async void OnBackButtonClicked(object sender, EventArgs e)
+        void Refresh(object sender, System.EventArgs e)
         {
-            if (webView.CanGoBack)
-            {
-                webView.GoBack();
-            }
-            else
-            {
-                await Navigation.PopAsync();
-            }
-        }
-
-        void OnForwardButtonClicked(object sender, EventArgs e)
-        {
-            if (webView.CanGoForward)
-            {
-                webView.GoForward();
-            }
+            webView.Reload();
         }
     }
 }

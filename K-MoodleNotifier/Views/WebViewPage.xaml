@@ -5,10 +5,10 @@
 
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="月別"  Command="{Binding TsukiCommand}" />
-        <ToolbarItem Text="日別"  Command="{Binding NichiCommand}" />
-        <ToolbarItem Text="直近"  Command="{Binding TyokkinCommand}" />
-        <ToolbarItem Icon="icon_home2.png" Command="{Binding RefreshCommand}" />
+        <ToolbarItem Text="月別"  Clicked="Refresh" />
+        <ToolbarItem Text="日別"  Clicked="Refresh" />
+        <ToolbarItem Text="直近"  Clicked="Refresh" />
+        <ToolbarItem Icon="icon_home2.png" Clicked="Refresh" />
     </ContentPage.ToolbarItems>
 
     <WebView x:Name="webView" />
