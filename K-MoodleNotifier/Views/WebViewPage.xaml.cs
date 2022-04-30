@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,10 +18,19 @@ public partial class WebViewPage : ContentPage
             InitializeComponent();
             webView.Source = "https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=upcoming";
     }
-        
-        void Refresh(object sender, System.EventArgs e)
+
+        private async void Refresh(object sender, System.EventArgs e)
         {
-            webView.Reload();
+            var id = await SecureStorage.GetAsync("text");
+            var password = await SecureStorage.GetAsync("desc");
+            Debug.Write(id);
+            Debug.Write(password);
+            await webView.EvaluateJavaScriptAsync($"document.querySelector('#username').value = id;");
+
+            await webView.EvaluateJavaScriptAsync($"document.querySelector('#password').value = password;");
+
+            await webView.EvaluateJavaScriptAsync($"document.querySelector('#loginbtn').click();");
+            //   webView.Reload();
         }
 
         void Tsukibetsu(object sender, System.EventArgs e)
