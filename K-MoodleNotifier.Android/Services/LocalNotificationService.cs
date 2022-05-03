@@ -65,7 +65,7 @@ namespace K_MoodleNotifier.Droid.Services
                                             .SetContentTitle(title)
                                             .SetContentText(message)
                                             .SetAutoCancel(true)
-                                            .SetContentIntent(pendingIntent)
+                                            .SetContentIntent(pendingIntent);
                                             .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
 
             var notificationManager = NotificationManagerCompat.From(AndroidApp.Context);
