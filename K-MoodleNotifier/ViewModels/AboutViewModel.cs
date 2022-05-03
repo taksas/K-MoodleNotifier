@@ -9,7 +9,7 @@ using AngleSharp.Html.Dom;
 using K_MoodleNotifier.Interfaces;
 using Prism.Commands;
 using Prism.Navigation;
-
+using System;
 
 namespace K_MoodleNotifier.ViewModels
 {
@@ -84,7 +84,7 @@ namespace K_MoodleNotifier.ViewModels
             var config = Configuration.Default.WithDefaultLoader().WithDefaultCookies(); // WithDefaultCookies()を追加
             var context = BrowsingContext.New(config);
             //URLを取得
-            await context.OpenAsync("https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=day");
+            await context.OpenAsync("https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=day&time=1651417200");
 
 
             //submit
@@ -98,20 +98,24 @@ namespace K_MoodleNotifier.ViewModels
             try
             {
                 var classpList = document.GetElementsByClassName("name d-inline-block");
-                var classpList2 = document.GetElementsByClassName("dimmed_text");
-                foreach (var c in classpList)
+                var classpList1 = document.GetElementsByClassName("dimmed_text");
+
+                /*     foreach (var c in classpList)
+                     {
+                         Debug.WriteLine(c.TextContent);
+                     }
+                     foreach (var c1 in classpList2)
+                     {
+                         Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
+                     }
+     */
+                for (var i = 0; i < classpList.Length && i < classpList1.Length ; i++)
                 {
-                    Debug.WriteLine(c.TextContent);
+                    var c = classpList[i];
+                    var c1 = classpList1[i];
+                    Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
+                    localNotificationsService.ShowNotification(c.TextContent, c1.TextContent.Replace("本日, ", ""), new Dictionary<string, string>());
                 }
-                foreach (var c1 in classpList2)
-                {
-                    Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
-                }
-
-
-
-
-
             }
             catch (System.Exception)
             {
