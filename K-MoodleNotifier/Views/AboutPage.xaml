@@ -14,6 +14,7 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Icon="refresh.png" Command="{Binding Refreshing}" />
+        <ToolbarItem Icon="home.png" Command="{Binding ShowNotificationCommand}" />
     </ContentPage.ToolbarItems>
     
     

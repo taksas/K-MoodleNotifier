@@ -1,24 +1,14 @@
 ﻿using K_MoodleNotifier.Views;
-using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using AngleSharp;
-using System.Collections;
-using System.IO;
-using System.Text;
 using System.Diagnostics;
 using AngleSharp.Html.Dom;
-using AngleSharp.Dom;
-using AngleSharp.Scripting;
-using K_MoodleNotifier.Models;
-using System.Collections.ObjectModel;
+using K_MoodleNotifier.Interfaces;
+using Prism.Commands;
+using Prism.Navigation;
 
 
 namespace K_MoodleNotifier.ViewModels
@@ -26,6 +16,8 @@ namespace K_MoodleNotifier.ViewModels
     public class AboutViewModel : BaseViewModel
     {
 
+        public readonly ILocalNotificationsService localNotificationsService;
+        public ICommand ShowNotificationCommand { get; private set; }
 
         public Command OpenWebCommand { get; }
         public Command StartWebCommand { get; }
@@ -44,8 +36,19 @@ namespace K_MoodleNotifier.ViewModels
 
 
             Refreshing = new Command(OnRefreshing);
+
+
+
+            localNotificationsService = DependencyService.Get<ILocalNotificationsService>();
+            ShowNotificationCommand = new DelegateCommand(ShowNotification);
+
         }
 
+
+        private void ShowNotification()
+        {
+            localNotificationsService.ShowNotification("Local Notification", "This a local notification", new Dictionary<string, string>());
+        }
 
 
 
