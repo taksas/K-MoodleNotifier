@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="K_MoodleNotifier.Views.LoginPage"
              xmlns:vm="clr-namespace:K_MoodleNotifier.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              Title="{Binding Title}">
     
     <ContentPage.BindingContext>
@@ -20,29 +21,48 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Start developing now" FontSize="Title"/>
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
+                <Label Text="香川大学Moodleカレンダー通知アプリ" FontSize="Title"/>
+                <Label Text="バージョン1.0.0 (2022/05/05)" FontSize="20"/>
+                <Label Text="利用規約やライセンスはこちらから確認できます。" FontSize="16" Padding="0,0,0,0"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Learn more at "/>
-                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                                <Span Text="このアプリの使用は自己責任でお願いします。"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="このアプリの使用によって発生したあらゆる損害（通知が来なくて課題提出を忘れたなど）について、アプリ開発者はその責任を負いません。"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="このアプリには様々なフレームワーク、OSSが使用されています。"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="それぞれのライセンスについては以下を参照してください。"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
+                <Button Margin="0,10,0,0" Text="ライセンスについて（GitHubで最新版について確認する）"
                         Command="{Binding OpenWebCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+
+                <Label FontSize="16" Padding="0,24,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="このアプリでは、ユーザーのパスワードを保存します。"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="パスワードは香川大学Moodleのログイン以外に使用されることはありません。"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+
+                                <Span Text="学籍番号、パスワードはセキュリティで保護されたストレージに格納されます。"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Margin="0,10,0,0" Text="Xamarin.Essentials:セキュリティで保護されたストレージ"
+                        Command="{Binding OpenWebCommand2}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
             </StackLayout>

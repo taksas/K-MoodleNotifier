@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-MoodleNotifier.Android", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-MoodleNotifier.iOS", "K-MoodleNotifier.iOS\K-MoodleNotifier.iOS.csproj", "{2EA1A275-82CA-413B-9D03-BB95DDAA5DB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K-MoodleNotifier", "K-MoodleNotifier\K-MoodleNotifier.csproj", "{5515847B-3A6E-4748-9C29-94C1575A5686}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "K-MoodleNotifier", "K-MoodleNotifier\K-MoodleNotifier.csproj", "{5515847B-3A6E-4748-9C29-94C1575A5686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{727A72FB-0E33-4A57-A004-761F329708CD}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
