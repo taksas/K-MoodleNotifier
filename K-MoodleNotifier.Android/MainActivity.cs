@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using AndroidX.Work;
+using K_MoodleNotifier.Droid.Workers;
 
 namespace K_MoodleNotifier.Droid
 {
@@ -17,6 +19,13 @@ namespace K_MoodleNotifier.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+
+           PeriodicWorkRequest NotifyWorkRequest = PeriodicWorkRequest.Builder.From<NotifyWorker>(TimeSpan.FromMinutes(15)).Build();
+
+          WorkManager.Instance.Enqueue(NotifyWorkRequest);
+
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
