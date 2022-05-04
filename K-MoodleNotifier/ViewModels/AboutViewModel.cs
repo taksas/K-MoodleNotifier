@@ -128,7 +128,14 @@ namespace K_MoodleNotifier.ViewModels
             {
                 throw;
             }
-
+            // Debug.WriteLine(document.Title);
+            if (document.Title == "香川大学 Moodle: サイトにログインする")
+            {
+                localNotificationsService.ShowNotification("ログインに失敗しました", "パスワードが違うようです。再設定してください", new Dictionary<string, string>());
+            } else
+            {
+                localNotificationsService.ShowNotification("ログインに成功しました", "定期的にカレンダーの予定をお知らせします", new Dictionary<string, string>());
+            }
             //Debug.WriteLine(result);//マイページのHTMLが取得されている
         }
 

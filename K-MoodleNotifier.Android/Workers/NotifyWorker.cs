@@ -1,40 +1,14 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using AndroidX.Work;
-using Android.Content;
-using Android.Util;
-using AndroidX.Work;
-using System.Threading;
 using Xamarin.Essentials;
 using AngleSharp;
 using Configuration = AngleSharp.Configuration;
 using AngleSharp.Html.Dom;
-using Android.App;
-using Android.Content;
 using Android.Graphics;
-using Android.OS;
 using AndroidX.Core.App;
-using K_MoodleNotifier.Interfaces;
-using System.Collections.Generic;
-using Xamarin.Forms;
 using AndroidApp = Android.App.Application;
 
 
