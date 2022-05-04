@@ -4,7 +4,8 @@
              x:Class="K_MoodleNotifier.Views.LoginPage"
              xmlns:vm="clr-namespace:K_MoodleNotifier.ViewModels"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="White">
     
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
@@ -23,21 +24,21 @@
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="香川大学Moodleカレンダー通知アプリ" FontSize="Title"/>
-                <Label Text="バージョン1.0.0 (2022/05/05)" FontSize="20"/>
-                <Label Text="利用規約やライセンスはこちらから確認できます。" FontSize="16" Padding="0,0,0,0"/>
+                <Label Text="香川大学Moodleカレンダー通知アプリ" FontSize="Title" TextColor="Black"/>
+                <Label Text="バージョン1.0.0 (2022/05/05)" FontSize="20" TextColor="Black"/>
+                <Label Text="利用規約やライセンスはこちらから確認できます。" FontSize="16" Padding="0,0,0,0" TextColor="Black"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="このアプリの使用は自己責任でお願いします。"/>
+                                <Span Text="このアプリの使用は自己責任でお願いします。" TextColor="Black"/>
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
-                                <Span Text="このアプリの使用によって発生したあらゆる損害（通知が来なくて課題提出を忘れたなど）について、アプリ開発者はその責任を負いません。"/>
+                                <Span Text="このアプリの使用によって発生したあらゆる損害（通知が来なくて課題提出を忘れたなど）について、アプリ開発者はその責任を負いません。" TextColor="Black"/>
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
-                                <Span Text="このアプリには様々なフレームワーク、OSSが使用されています。"/>
+                                <Span Text="このアプリには様々なフレームワーク、OSSが使用されています。" TextColor="Black"/>
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
-                                <Span Text="それぞれのライセンスについては以下を参照してください。"/>
+                                <Span Text="それぞれのライセンスについては以下を参照してください。" TextColor="Black"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -51,12 +52,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="このアプリでは、ユーザーのパスワードを保存します。"/>
+                                <Span Text="このアプリでは、ユーザーのパスワードを保存します。" TextColor="Black"/>
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
-                                <Span Text="パスワードは香川大学Moodleのログイン以外に使用されることはありません。"/>
-                                <Span Text="{x:Static sys:Environment.NewLine}" />
-
-                                <Span Text="学籍番号、パスワードはセキュリティで保護されたストレージに格納されます。"/>
+                                <Span Text="学籍番号、パスワードはセキュリティで保護されたストレージに格納されます。" TextColor="Black"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
