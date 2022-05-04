@@ -137,7 +137,7 @@ namespace K_MoodleNotifier.Droid.Workers
             var pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, notificationId, intent, PendingIntentFlags.OneShot);
             var notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
                                             .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
-                                            .SetSmallIcon(Resource.Mipmap.icon)
+                                            .SetSmallIcon(Resource.Drawable.icon_K)
                                             .SetContentTitle(title)
                                             .SetContentText(message)
                                             .SetAutoCancel(true)
