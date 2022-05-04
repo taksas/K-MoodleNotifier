@@ -104,8 +104,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon_calendar.png" />
     <Content Include="icon_home2.png" />
     <Content Include="icon_info2.png" />
+    <Content Include="icon_K.png" />
     <Content Include="icon_settings2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />

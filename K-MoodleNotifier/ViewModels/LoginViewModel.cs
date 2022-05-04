@@ -14,7 +14,7 @@ namespace K_MoodleNotifier.ViewModels
         public LoginViewModel()
     {
         Title = "About";
-        OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/taksas/K-MoodleNotifier/blob/master/LICENCE"));
+        OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/taksas/K-MoodleNotifier/blob/master/LICENSE"));
         OpenWebCommand2 = new Command(async () => await Browser.OpenAsync("https://docs.microsoft.com/ja-jp/xamarin/essentials/secure-storage?tabs=android"));
     }
 
