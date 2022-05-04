@@ -5,13 +5,14 @@
              Shell.PresentationMode="ModalAnimated"
              Title="New Item"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true">
+             ios:Page.UseSafeArea="true"
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Label Text="学籍番号" FontSize="Medium" />
-            <Label Text="s○○△○○〇の形式。s12t345、s98m765など" FontSize="14" />
+            <Label Text="学籍番号" FontSize="Medium"  TextColor="Black"/>
+            <Label Text="s○○△○○〇の形式。s12t345、s98m765など" FontSize="14"  TextColor="Black"/>
             <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-            <Label Text="パスワード" FontSize="Medium" />
+            <Label Text="パスワード" FontSize="Medium"  TextColor="Black"/>
             <Entry IsPassword="true" Text="{Binding Description, Mode=TwoWay}" FontSize="Medium" />
             <StackLayout Orientation="Horizontal">
                 <Button Text="キャンセル" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
