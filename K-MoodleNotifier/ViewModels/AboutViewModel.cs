@@ -36,7 +36,7 @@ namespace K_MoodleNotifier.ViewModels
 
 
             Refreshing = new Command(OnRefreshing);
-            Debug.WriteLine(DateTime.Now.Hour + "時ぃいいいいいいいいいいいいいいいいいいいいいいいいいいい");
+            
 
 
             localNotificationsService = DependencyService.Get<ILocalNotificationsService>();

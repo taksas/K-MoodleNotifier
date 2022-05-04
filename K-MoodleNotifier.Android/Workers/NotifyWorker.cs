@@ -10,7 +10,7 @@ using AngleSharp.Html.Dom;
 using Android.Graphics;
 using AndroidX.Core.App;
 using AndroidApp = Android.App.Application;
-
+using System;
 
 namespace K_MoodleNotifier.Droid.Workers
 {
@@ -31,7 +31,11 @@ namespace K_MoodleNotifier.Droid.Workers
         }
         public override Result DoWork()
         {
-            WorkerStart();
+            if ( DateTime.Now.Hour == 0 )
+            {
+                WorkerStart();
+            }
+            
             Android.Util.Log.Debug("CalculatorWorker", $"Your T");
             return Result.InvokeSuccess();
         }
