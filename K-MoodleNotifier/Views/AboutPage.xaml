@@ -59,9 +59,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="ログイン情報の設定が終わったら、下のボタンをタップしてください。「ログインに成功しました」という通知が出れば設定完了です。" TextColor="Black"/>
+                                <Span Text="ログイン情報の設定が終わったら、下のボタンをタップしてください。今日のカレンダーについての通知が出れば設定完了です。" TextColor="Black"/>
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
-                                <Span Text="それ以外の通知が出た場合、通知が何も出なかった場合はログイン情報、ネットワーク接続を確認してください。" TextColor="Black"/>
+                                <Span Text="それ以外の通知が出た場合、又は通知が何も出なかった場合はログイン情報、ネットワーク接続を確認してください。" TextColor="Black"/>
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
