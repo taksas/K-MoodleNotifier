@@ -85,7 +85,7 @@ namespace K_MoodleNotifier.ViewModels
             var config = Configuration.Default.WithDefaultLoader().WithDefaultCookies(); // WithDefaultCookies()を追加
             var context = BrowsingContext.New(config);
             //URLを取得
-            await context.OpenAsync("https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=day&time=1650466800");
+            await context.OpenAsync("https://kadai-moodle.kagawa-u.ac.jp/calendar/view.php?view=day");
 
 
             //submit
@@ -99,24 +99,25 @@ namespace K_MoodleNotifier.ViewModels
             try
             {
                 var classpList = document.GetElementsByClassName("name d-inline-block");
-                var classpList1 = document.GetElementsByClassName("dimmed_text");
-                var classpList2 = document.QuerySelectorAll("a[href^='https://kadai-moodle.kagawa-u.ac.jp/course/view.php?id=']");
-                /*
-                                    foreach (var c in classpList2)
+                // var classpList1 = document.GetElementsByClassName("dimmed_text");
+                var classpList1 = document.GetElementsByClassName("col-11");
+                //var classpList2 = document.QuerySelectorAll("div[href^='https://kadai-moodle.kagawa-u.ac.jp/course/view.php?id=']");
+                
+          /*                          foreach (var c in classpList)
                                     {
                                         Debug.WriteLine(c.TextContent);
                                     }
 
-                                                    foreach (var c1 in classpList2)
+                                                    foreach (var c1 in classpList1)
                                                     {
                                                         Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
                                                     }
-                               */
-                for (var i = 0; i < classpList.Length && i < classpList1.Length; i++)
+                */               
+                for (var i = 0; i < classpList.Length ; i++)
                                 {
                                     var c = classpList[i];
-                                    var c1 = classpList1[i];
-                                    var c2 = classpList2[i];
+                                    var c1 = classpList1[i * 3];
+                                    var c2 = classpList1[i * 3 + 2];
                     //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                                     localNotificationsService.ShowNotification(c.TextContent, $"{c2.TextContent} \n {c1.TextContent.Replace("本日, ", "")}", new Dictionary<string, string>());
                                  }
