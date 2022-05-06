@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="1.0" package="tech.taksas.k_moodlenotifier" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="1.0.1" package="tech.taksas.k_moodlenotifier" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
 	<application android:label="香川大学Moodleカレンダー通知アプリ" android:theme="@style/MainTheme" android:allowBackup="false" android:usesCleartextTraffic="true" android:debuggable="false"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
