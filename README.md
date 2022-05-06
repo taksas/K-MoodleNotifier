@@ -8,6 +8,10 @@
 
 [GitHub上でリリースを見る](https://github.com/taksas/ZoomMuter/tags)
 
+
+<h1>利用時の注意</h1>
+当日のカレンダーに手動で予定が追加されていた場合、通知の表示がバグります。
+
 <h1>マルチプラットフォームについて</h1>
 このプロジェクトの開発環境、Xamarin.Forms自体はマルチプラットフォーム（Android, iOS, UWP(β)）対応です。
 が、このプロジェクトでは各プラットフォーム依存のサービス（ローカル通知とバックグラウンド処理）を使用しており、Xamarin.Forms の DependencyServiceを用いて実装しています。
