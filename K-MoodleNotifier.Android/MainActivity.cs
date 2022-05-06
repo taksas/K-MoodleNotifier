@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using AndroidX.Work;
 using K_MoodleNotifier.Droid.Workers;
+using Android.Content;
 
 namespace K_MoodleNotifier.Droid
 {
@@ -20,6 +21,19 @@ namespace K_MoodleNotifier.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
+            //Android6 Marshmallow以降
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+            {
+                PowerManager pm = (PowerManager)this.GetSystemService(Context.PowerService);
+                string packageName = this.PackageManager.GetPackageInfo(this.PackageName, 0).PackageName;
+                if (!pm.IsIgnoringBatteryOptimizations(packageName))
+                {
+                    //Dozeホワイトリストに追加する許可を求める
+                    Intent intent = new Intent(Android.Provider.Settings.ActionRequestIgnoreBatteryOptimizations);
+                    intent.SetData(Android.Net.Uri.Parse("package:" + packageName));
+                    this.StartActivity(intent);
+                }
+            }
 
             WorkManager manager = WorkManager.GetInstance(this);
             manager.CancelAllWork();
