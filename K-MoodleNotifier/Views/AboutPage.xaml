@@ -75,6 +75,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
+                                <Span Text="当日のカレンダーに手動で予定を追加していた場合、表示がバグります。このアプリを使用する場合は予定の手動追加をしないようにしてください。" TextColor="Black"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
                                 <Span Text="〇Android 6以降の端末の場合" TextColor="Black"/>
                                 <Span Text="{x:Static sys:Environment.NewLine}" />
                                 <Span Text="正常に通知を行うために、起動時のダイアログに従ってこのアプリの電池の最適化を無効化してください。" TextColor="Black"/>
