@@ -4,4 +4,5 @@
 	<application android:label="香川大学Moodleカレンダー通知アプリ" android:theme="@style/MainTheme" android:allowBackup="false" android:usesCleartextTraffic="true" android:debuggable="false"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 </manifest>

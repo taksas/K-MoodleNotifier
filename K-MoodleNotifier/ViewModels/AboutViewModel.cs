@@ -100,7 +100,7 @@ namespace K_MoodleNotifier.ViewModels
                                    {
                                        var classpList = document.GetElementsByClassName("name d-inline-block");
                                        // var classpList1 = document.GetElementsByClassName("dimmed_text");
-                                       var classpList1 = document.GetElementsByClassName("col-11");
+                                       var classpList1 = document.QuerySelectorAll("div[class^='col-11']");
                                        //var classpList2 = document.QuerySelectorAll("div[href^='https://kadai-moodle.kagawa-u.ac.jp/course/view.php?id=']");
 /*
                                                                 foreach (var c in classpList)
