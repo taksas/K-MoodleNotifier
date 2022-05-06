@@ -75,6 +75,20 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
+                                <Span Text="〇Android 6以降の端末の場合" TextColor="Black"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="正常に通知を行うために、起動時のダイアログに従ってこのアプリの電池の最適化を無効化してください。" TextColor="Black"/>
+                                <Span Text="{x:Static sys:Environment.NewLine}" />
+                                <Span Text="まだ電池の最適化を無効化していない場合、次のアプリ起動時にダイアログが表示されます。" TextColor="Black"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FontSize="16" Padding="0,24,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
                                 <Span Text="ログイン後、アプリを再起動することで「カレンダー」タブが使用可能になります。" TextColor="Black"/>
                             </FormattedString.Spans>
                         </FormattedString>

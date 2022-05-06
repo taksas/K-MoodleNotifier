@@ -21,19 +21,7 @@ namespace K_MoodleNotifier.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            //Android6 Marshmallow以降
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
-            {
-                PowerManager pm = (PowerManager)this.GetSystemService(Context.PowerService);
-                string packageName = this.PackageManager.GetPackageInfo(this.PackageName, 0).PackageName;
-                if (!pm.IsIgnoringBatteryOptimizations(packageName))
-                {
-                    //Dozeホワイトリストに追加する許可を求める
-                    Intent intent = new Intent(Android.Provider.Settings.ActionRequestIgnoreBatteryOptimizations);
-                    intent.SetData(Android.Net.Uri.Parse("package:" + packageName));
-                    this.StartActivity(intent);
-                }
-            }
+            DozeIgnoring();
 
             WorkManager manager = WorkManager.GetInstance(this);
             manager.CancelAllWork();
@@ -49,6 +37,23 @@ namespace K_MoodleNotifier.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public void DozeIgnoring()
+        {
+            //Android6 Marshmallow以降
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+            {
+                PowerManager pm = (PowerManager)this.GetSystemService(Context.PowerService);
+                string packageName = this.PackageManager.GetPackageInfo(this.PackageName, 0).PackageName;
+                if (!pm.IsIgnoringBatteryOptimizations(packageName))
+                {
+                    //Dozeホワイトリストに追加する許可を求める
+                    Intent intent = new Intent(Android.Provider.Settings.ActionRequestIgnoreBatteryOptimizations);
+                    intent.SetData(Android.Net.Uri.Parse("package:" + packageName));
+                    this.StartActivity(intent);
+                }
+            }
         }
     }
 }
