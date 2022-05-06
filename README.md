@@ -14,7 +14,7 @@
 この各プラットフォーム依存のサービスについては現状Android向けのものしか実装していないため、現在のリリースターゲットはAndroidのみになっています。
 <h1>ライセンス</h1>
 ライセンスの詳細については、
-<br>
+
 [LICENSEファイル](https://github.com/taksas/K-MoodleNotifier/blob/master/LICENSE) 
 <br>
 を参照してください。
