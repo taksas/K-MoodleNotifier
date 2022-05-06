@@ -13,5 +13,5 @@
 が、このプロジェクトでは各プラットフォーム依存のサービス（ローカル通知とバックグラウンド処理）を使用しており、Xamarin.Forms の DependencyServiceを用いて実装しています。
 この各プラットフォーム依存のサービスについては現状Android向けのものしか実装していないため、現在のリリースターゲットはAndroidのみになっています。
 <h1>ライセンス</h1>
-ライセンスの詳細については、[LICENSEファイル](https://github.com/taksas/K-MoodleNotifier/blob/master/LICENSE)を参照してください。
+ライセンスの詳細については、[LICENSEファイル](https://github.com/taksas/K-MoodleNotifier/blob/master/LICENSE) を参照してください。
 このプロジェクト自体はMITライセンスになっています。
