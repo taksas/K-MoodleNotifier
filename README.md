@@ -32,4 +32,5 @@ iOS用のDependency Serviceを実装するなど大歓迎です（当方Macを�
 [LICENSEファイル](https://github.com/taksas/K-MoodleNotifier/blob/master/LICENSE) 
 <br>
 を参照してください。
+<br>
 このプロジェクトはMITライセンスでの公開となります。
