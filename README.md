@@ -6,7 +6,7 @@
 <h2>ダウンロード</h2>
 ダウンロード及びアップデートは以下から可能です。
 
-<a href='https://play.google.com/store/apps/details?id=tech.taksas.k_moodlenotifier&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="280px" alt='Google Play で手に入れよう' src='https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=tech.taksas.k_moodlenotifier&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="200px" alt='Google Play で手に入れよう' src='https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png'/></a>
 
 <h2>利用時の注意</h2>
 ・ 当日のカレンダーに手動で予定が追加されていた場合、通知の表示がバグります。このアプリを使用する場合は予定の手動追加はお控えください。
