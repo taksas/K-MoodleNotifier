@@ -11,6 +11,7 @@ using Android.Graphics;
 using AndroidX.Core.App;
 using AndroidApp = Android.App.Application;
 using System;
+using System.Threading;
 
 namespace K_MoodleNotifier.Droid.Workers
 {
@@ -42,10 +43,29 @@ namespace K_MoodleNotifier.Droid.Workers
 
         public async void WorkerStart()
         {
+            var day1 = await SecureStorage.GetAsync("Day1");
+            var day2 = await SecureStorage.GetAsync("Day2");
+            var day3 = await SecureStorage.GetAsync("Day3");
+
+            if (day1 == "1")
+            {
+                Day1();
+                Thread.Sleep(10000);
+            }
+            if (day2 == "1")
+            {
+                Day2();
+                Thread.Sleep(10000);
+            }
+            if (day3 == "1")
+            {
+                Day3();
+            }
+        }
 
 
-
-
+        public async void Day1()
+        {
             var id = await SecureStorage.GetAsync("text");
             var password = await SecureStorage.GetAsync("desc");
 
@@ -98,10 +118,42 @@ namespace K_MoodleNotifier.Droid.Workers
             {
                 throw;
             }
-
-            //Debug.WriteLine(result);//マイページのHTMLが取得されている
         }
-        private void CreateNotificationChannel()
+            //Debug.WriteLine(result);//マイページのHTMLが取得されている}
+            public async void Day2()
+        { }
+        public async void Day3()
+        { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            private void CreateNotificationChannel()
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
             {
