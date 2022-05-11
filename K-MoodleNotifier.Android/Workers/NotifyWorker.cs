@@ -49,19 +49,22 @@ namespace K_MoodleNotifier.Droid.Workers
             var day2 = await SecureStorage.GetAsync("Day2");
             var day3 = await SecureStorage.GetAsync("Day3");
 
-            if (day1 == "1")
+
+
+            if (day3 == "1")
             {
-                Day1();
-                Thread.Sleep(10000);
+                Day3();
+                Thread.Sleep(5000);
             }
             if (day2 == "1")
             {
                 Day2();
-                Thread.Sleep(10000);
+                Thread.Sleep(5000);
             }
-            if (day3 == "1")
+            if (day1 == "1")
             {
-                Day3();
+                Day1();
+
             }
         }
 
@@ -104,13 +107,16 @@ namespace K_MoodleNotifier.Droid.Workers
                        Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
                    }
    */
-                for (var i = 0; i < classpList.Length; i++)
+                if (classpList.Length - 1 != -1)
                 {
-                    var c = classpList[i];
-                    var c1 = classpList1[i * 3];
-                    var c2 = classpList1[i * 3 + 2];
-                    //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                    ShowNotification(c.TextContent, $"{c2.TextContent} \n {c1.TextContent.Replace("本日, ", "")}", new Dictionary<string, string>());
+                    for (var i = classpList.Length - 1; i >= 0; i--)
+                    {
+                        var c = classpList[i];
+                        var c1 = classpList1[i * 3];
+                        var c2 = classpList1[i * 3 + 2];
+                        //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
+                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace("本日, ", "")}  {c2.TextContent} ", new Dictionary<string, string>());
+                    }
                 }
 
             }
@@ -152,12 +158,16 @@ namespace K_MoodleNotifier.Droid.Workers
                 var classpList = document.GetElementsByClassName("name d-inline-block");
                 var classpList1 = document.QuerySelectorAll("div[class^='col-11']");
 
-                for (var i = 0; i < classpList.Length; i++)
+                if (classpList.Length - 1 != -1)
                 {
-                    var c = classpList[i];
-                    var c1 = classpList1[i * 3];
-                    var c2 = classpList1[i * 3 + 2];
-                    ShowNotification(c.TextContent, $"{c2.TextContent} \n {c1.TextContent.Replace("本日, ", "")}", new Dictionary<string, string>());
+                    for (var i = classpList.Length - 1; i >= 0; i--)
+                    {
+                        var c = classpList[i];
+                        var c1 = classpList1[i * 3];
+                        var c2 = classpList1[i * 3 + 2];
+                        //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  {c2.TextContent} ", new Dictionary<string, string>());
+                    }
                 }
 
             }
@@ -215,13 +225,16 @@ namespace K_MoodleNotifier.Droid.Workers
                        Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
                    }
    */
-                for (var i = 0; i < classpList.Length; i++)
+                if (classpList.Length - 1 != -1)
                 {
-                    var c = classpList[i];
-                    var c1 = classpList1[i * 3];
-                    var c2 = classpList1[i * 3 + 2];
-                    //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                    ShowNotification(c.TextContent, $"{c2.TextContent} \n {c1.TextContent.Replace("本日, ", "")}", new Dictionary<string, string>());
+                    for (var i = classpList.Length - 1; i >= 0; i--)
+                    {
+                        var c = classpList[i];
+                        var c1 = classpList1[i * 3];
+                        var c2 = classpList1[i * 3 + 2];
+                        //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
+                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace("本日, ", "")}  {c2.TextContent} ", new Dictionary<string, string>());
+                    }
                 }
 
             }
