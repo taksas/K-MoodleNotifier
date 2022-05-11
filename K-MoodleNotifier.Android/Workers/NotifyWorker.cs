@@ -115,7 +115,7 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace("本日, ", "")}  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  {c2.TextContent} ", new Dictionary<string, string>());
                     }
                 }
 
@@ -233,7 +233,9 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace("本日, ", "")}  {c2.TextContent} ", new Dictionary<string, string>());
+                        DateTime dtToday = DateTime.Today;
+                        DateTime dtDAT = dtToday.AddDays(2);
+                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  {c2.TextContent} ", new Dictionary<string, string>());
                     }
                 }
 
