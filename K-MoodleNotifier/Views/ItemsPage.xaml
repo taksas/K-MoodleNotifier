@@ -17,12 +17,19 @@
 
 
 
-                <Button Margin="0,10,0,0" Text="Moodleのログイン情報を設定"
+            <Button Margin="0,10,0,0" Text="Moodleのログイン情報を設定"
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" Clicked="LoginCommand" />
-
-            </StackLayout>
+            <RelativeLayout Margin="10">
+                <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="6"/>
+                <CheckBox Color="{StaticResource Primary}" IsChecked="true" CheckedChanged="OnCheckBoxCheckedChanged1"/>
+                <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="46"/>
+                <CheckBox Color="{StaticResource Primary}" TranslationY="40" IsChecked="true" CheckedChanged="OnCheckBoxCheckedChanged2"/>
+                <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="86"/>
+                <CheckBox Color="{StaticResource Primary}" TranslationY="80" IsChecked="true" CheckedChanged="OnCheckBoxCheckedChanged3"/>
+            </RelativeLayout>
+        </StackLayout>
         </ScrollView>
 
 
