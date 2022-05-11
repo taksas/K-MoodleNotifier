@@ -36,11 +36,11 @@ namespace K_MoodleNotifier.Views
             }
             if (day2 == null)
             {
-                await SecureStorage.SetAsync("Day1", "0");
+                await SecureStorage.SetAsync("Day2", "0");
             }
             if (day3 == null)
             {
-                await SecureStorage.SetAsync("Day1", "0");
+                await SecureStorage.SetAsync("Day3", "0");
             }
         }
     }
