@@ -95,8 +95,9 @@ namespace K_MoodleNotifier.ViewModels
                                        password = await SecureStorage.GetAsync("desc")
                                    });
 
-
-                                   try
+            var yokuzitsu = document.QuerySelectorAll("href[title='翌日']");
+            await context.OpenAsync((AngleSharp.Io.IResponse)yokuzitsu);
+            try
                                    {
                                        var classpList = document.GetElementsByClassName("name d-inline-block");
                                        // var classpList1 = document.GetElementsByClassName("dimmed_text");
