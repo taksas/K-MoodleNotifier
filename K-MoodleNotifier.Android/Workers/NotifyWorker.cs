@@ -32,6 +32,8 @@ namespace K_MoodleNotifier.Droid.Workers
         }
         public override Result DoWork()
         {
+            WorkerStart();
+        
             if ( DateTime.Now.Hour == 0 )
             {
                 WorkerStart();
@@ -140,30 +142,21 @@ namespace K_MoodleNotifier.Droid.Workers
                 password = await SecureStorage.GetAsync("desc")
             });
 
+            foreach (var item in document.GetElementsByClassName("arrow_link next"))
+            {
+                document = await context.OpenAsync(item.GetAttribute("href"));
+            }
 
             try
             {
                 var classpList = document.GetElementsByClassName("name d-inline-block");
-                // var classpList1 = document.GetElementsByClassName("dimmed_text");
                 var classpList1 = document.QuerySelectorAll("div[class^='col-11']");
-                //var classpList2 = document.QuerySelectorAll("div[href^='https://kadai-moodle.kagawa-u.ac.jp/course/view.php?id=']");
 
-                /*   foreach (var c in classpList)
-                   {
-                       Debug.WriteLine(c.TextContent);
-                   }
-
-                   foreach (var c1 in classpList1)
-                   {
-                       Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
-                   }
-   */
                 for (var i = 0; i < classpList.Length; i++)
                 {
                     var c = classpList[i];
                     var c1 = classpList1[i * 3];
                     var c2 = classpList1[i * 3 + 2];
-                    //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                     ShowNotification(c.TextContent, $"{c2.TextContent} \n {c1.TextContent.Replace("本日, ", "")}", new Dictionary<string, string>());
                 }
 
@@ -195,6 +188,15 @@ namespace K_MoodleNotifier.Droid.Workers
                 password = await SecureStorage.GetAsync("desc")
             });
 
+            foreach (var item in document.GetElementsByClassName("arrow_link next"))
+            {
+                document = await context.OpenAsync(item.GetAttribute("href"));
+            }
+
+            foreach (var item in document.GetElementsByClassName("arrow_link next"))
+            {
+                document = await context.OpenAsync(item.GetAttribute("href"));
+            }
 
             try
             {
