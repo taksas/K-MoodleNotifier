@@ -20,11 +20,31 @@ namespace K_MoodleNotifier.Views
 
         public ItemsPage()
         {
+            
             InitializeComponent();
-            checkBox1 = new CheckBox { IsChecked = true };
+            checker();
         }
 
+        async void checker()
+        {
 
+            var day1 = await SecureStorage.GetAsync("Day1");
+            var day2 = await SecureStorage.GetAsync("Day2");
+            var day3 = await SecureStorage.GetAsync("Day3");
+
+            if (day1 == "1")
+            {
+                checkBox1.IsChecked = true;
+            }
+            if (day2 == "1")
+            {
+                checkBox2.IsChecked = true;
+            }
+            if (day3 == "1")
+            {
+                checkBox3.IsChecked = true;
+            }
+        }
         void LoginCommand(object sender, System.EventArgs e)
         {
             Shell.Current.GoToAsync(nameof(NewItemPage));

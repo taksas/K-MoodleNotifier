@@ -23,7 +23,7 @@
                         TextColor="White" Clicked="LoginCommand" />
             <RelativeLayout Margin="10">
                 <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="7"/>
-                <CheckBox x:Name="checkBox1" Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged1"/>
+                <CheckBox x:Name="checkBox1"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged1"/>
                 <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="47"/>
                 <CheckBox x:Name="checkBox2" Color="{StaticResource Primary}" TranslationY="40" CheckedChanged="OnCheckBoxCheckedChanged2"/>
                 <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="87"/>
