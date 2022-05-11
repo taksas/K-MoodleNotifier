@@ -21,7 +21,7 @@ namespace K_MoodleNotifier.Views
         public ItemsPage()
         {
             InitializeComponent();
-            
+            checkBox1 = new CheckBox { IsChecked = true };
         }
 
 
