@@ -42,6 +42,13 @@ namespace K_MoodleNotifier.Views
             {
                 await SecureStorage.SetAsync("Day3", "0");
             }
+
+            var a1 = await SecureStorage.GetAsync("Day1");
+            var a2 = await SecureStorage.GetAsync("Day2");
+            var a3 = await SecureStorage.GetAsync("Day3");
+            Debug.WriteLine("gogogo"+a1);
+            Debug.WriteLine("gogogo" + a2);
+            Debug.WriteLine("gogogo" + a3);
         }
     }
 
