@@ -22,11 +22,11 @@
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" Clicked="LoginCommand" />
             <RelativeLayout Margin="10">
-                <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="6"/>
+                <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="7"/>
                 <CheckBox Color="{StaticResource Primary}" IsChecked="true" CheckedChanged="OnCheckBoxCheckedChanged1"/>
-                <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="46"/>
+                <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="47"/>
                 <CheckBox Color="{StaticResource Primary}" TranslationY="40" IsChecked="false" CheckedChanged="OnCheckBoxCheckedChanged2"/>
-                <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="86"/>
+                <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="87"/>
                 <CheckBox Color="{StaticResource Primary}" TranslationY="80" IsChecked="false" CheckedChanged="OnCheckBoxCheckedChanged3"/>
             </RelativeLayout>
         </StackLayout>
