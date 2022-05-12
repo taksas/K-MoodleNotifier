@@ -54,43 +54,43 @@ namespace K_MoodleNotifier.Droid.Workers
             {
                 if (DateTime.Now.Hour +"" == daytime1)
                 {
-                    WorkerStart();
+                    WorkerStart(1);
                 }
             }
             if (daytime2 != "-1")
             {
                 if (DateTime.Now.Hour + "" == daytime2)
                 {
-                    WorkerStart();
+                    WorkerStart(2);
                 }
             }
             if (daytime3 != "-1")
             {
                 if (DateTime.Now.Hour + "" == daytime3)
                 {
-                    WorkerStart();
+                    WorkerStart(3);
                 }
             }
         }
 
 
-        public async void WorkerStart()
+        public async void WorkerStart(int n)
         {
-            var day1 = await SecureStorage.GetAsync("Day1");
-            var day2 = await SecureStorage.GetAsync("Day2");
-            var day3 = await SecureStorage.GetAsync("Day3");
+            var day1 = await SecureStorage.GetAsync("Day" + n + "1");
+            var day2 = await SecureStorage.GetAsync("Day" + n + "2");
+            var day3 = await SecureStorage.GetAsync("Day" + n + "3");
 
 
 
             if (day3 == "1")
             {
                 Day3();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
             }
             if (day2 == "1")
             {
                 Day2();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
             }
             if (day1 == "1")
             {
@@ -138,6 +138,7 @@ namespace K_MoodleNotifier.Droid.Workers
                        Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
                    }
    */
+                System.Console.WriteLine("Day1");
                 if (classpList.Length - 1 != -1)
                 {
                     for (var i = classpList.Length - 1; i >= 0; i--)
@@ -146,7 +147,8 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        ShowNotification(c.TextContent, $"{c1.TextContent}  {c2.TextContent} ", new Dictionary<string, string>());
+                        
+                       ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
                     }
                 }
 
@@ -189,6 +191,7 @@ namespace K_MoodleNotifier.Droid.Workers
                 var classpList = document.GetElementsByClassName("name d-inline-block");
                 var classpList1 = document.QuerySelectorAll("div[class^='col-11']");
 
+                System.Console.WriteLine("Day2");
                 if (classpList.Length - 1 != -1)
                 {
                     for (var i = classpList.Length - 1; i >= 0; i--)
@@ -197,7 +200,7 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        ShowNotification(c.TextContent, $"{c1.TextContent}  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
                     }
                 }
 
@@ -256,6 +259,8 @@ namespace K_MoodleNotifier.Droid.Workers
                        Debug.WriteLine(c1.TextContent.Replace("本日, ", ""));
                    }
    */
+
+                System.Console.WriteLine("Day3");
                 if (classpList.Length - 1 != -1)
                 {
                     for (var i = classpList.Length - 1; i >= 0; i--)
@@ -266,7 +271,7 @@ namespace K_MoodleNotifier.Droid.Workers
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                         DateTime dtToday = DateTime.Today;
                         DateTime dtDAT = dtToday.AddDays(2);
-                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  -  {c2.TextContent} ", new Dictionary<string, string>());
                     }
                 }
 

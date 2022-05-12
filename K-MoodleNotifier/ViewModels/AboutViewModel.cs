@@ -123,7 +123,7 @@ namespace K_MoodleNotifier.ViewModels
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        localNotificationsService.ShowNotification(c.TextContent, $"{c1.TextContent}  {c2.TextContent} ", new Dictionary<string, string>());
+                        localNotificationsService.ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
                     }
                 }
 
