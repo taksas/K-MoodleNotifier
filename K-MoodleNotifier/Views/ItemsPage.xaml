@@ -5,6 +5,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:K_MoodleNotifier.ViewModels"  
              xmlns:model="clr-namespace:K_MoodleNotifier.Models"  
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Name="BrowseItemsPage"
              BackgroundColor="White">
 
@@ -14,21 +15,134 @@
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
             <Label Text="設定" FontSize="Title" TextColor="Black"/>
-
-
-
             <Button Margin="0,10,0,0" Text="Moodleのログイン情報を設定"
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" Clicked="LoginCommand" />
+            <Label Text="{x:Static sys:Environment.NewLine}" />
+            <Label Text="通知をする時間帯" FontSize="Micro" TextColor="Black"/>
+            <Picker x:Name="MyPicker1"
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged1">
+                <Picker.Items>
+                    <x:String>（通知をしない）</x:String>
+                    <x:String>0時台</x:String>
+                    <x:String>1時台</x:String>
+                    <x:String>2時台</x:String>
+                    <x:String>3時台</x:String>
+                    <x:String>4時台</x:String>
+                    <x:String>5時台</x:String>
+                    <x:String>6時台</x:String>
+                    <x:String>7時台</x:String>
+                    <x:String>8時台</x:String>
+                    <x:String>9時台</x:String>
+                    <x:String>10時台</x:String>
+                    <x:String>11時台</x:String>
+                    <x:String>12時台</x:String>
+                    <x:String>13時台</x:String>
+                    <x:String>14時台</x:String>
+                    <x:String>15時台</x:String>
+                    <x:String>16時台</x:String>
+                    <x:String>17時台</x:String>
+                    <x:String>18時台</x:String>
+                    <x:String>19時台</x:String>
+                    <x:String>20時台</x:String>
+                    <x:String>21時台</x:String>
+                    <x:String>22時台</x:String>
+                    <x:String>23時台</x:String>
+                </Picker.Items>
+            </Picker>
             <RelativeLayout Margin="10">
                 <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="7"/>
-                <CheckBox x:Name="checkBox1"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged1"/>
+                <CheckBox x:Name="checkBox11"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged11"/>
                 <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="47"/>
-                <CheckBox x:Name="checkBox2" Color="{StaticResource Primary}" TranslationY="40" CheckedChanged="OnCheckBoxCheckedChanged2"/>
+                <CheckBox x:Name="checkBox12" Color="{StaticResource Primary}" TranslationY="40" CheckedChanged="OnCheckBoxCheckedChanged12"/>
                 <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="87"/>
-                <CheckBox x:Name="checkBox3" Color="{StaticResource Primary}" TranslationY="80" CheckedChanged="OnCheckBoxCheckedChanged3"/>
+                <CheckBox x:Name="checkBox13" Color="{StaticResource Primary}" TranslationY="80" CheckedChanged="OnCheckBoxCheckedChanged13"/>
             </RelativeLayout>
+            <Label Text="{x:Static sys:Environment.NewLine}" />
+            <Label Text="通知をする時間帯" FontSize="Micro" TextColor="Black"/>
+            <Picker x:Name="MyPicker2"
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged2">
+                <Picker.Items>
+                    <x:String>（通知をしない）</x:String>
+                    <x:String>0時台</x:String>
+                    <x:String>1時台</x:String>
+                    <x:String>2時台</x:String>
+                    <x:String>3時台</x:String>
+                    <x:String>4時台</x:String>
+                    <x:String>5時台</x:String>
+                    <x:String>6時台</x:String>
+                    <x:String>7時台</x:String>
+                    <x:String>8時台</x:String>
+                    <x:String>9時台</x:String>
+                    <x:String>10時台</x:String>
+                    <x:String>11時台</x:String>
+                    <x:String>12時台</x:String>
+                    <x:String>13時台</x:String>
+                    <x:String>14時台</x:String>
+                    <x:String>15時台</x:String>
+                    <x:String>16時台</x:String>
+                    <x:String>17時台</x:String>
+                    <x:String>18時台</x:String>
+                    <x:String>19時台</x:String>
+                    <x:String>20時台</x:String>
+                    <x:String>21時台</x:String>
+                    <x:String>22時台</x:String>
+                    <x:String>23時台</x:String>
+                </Picker.Items>
+            </Picker>
+            <RelativeLayout Margin="10">
+                <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="7"/>
+                <CheckBox x:Name="checkBox21"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged21"/>
+                <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="47"/>
+                <CheckBox x:Name="checkBox22" Color="{StaticResource Primary}" TranslationY="40" CheckedChanged="OnCheckBoxCheckedChanged22"/>
+                <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="87"/>
+                <CheckBox x:Name="checkBox23" Color="{StaticResource Primary}" TranslationY="80" CheckedChanged="OnCheckBoxCheckedChanged23"/>
+            </RelativeLayout>
+            <Label Text="{x:Static sys:Environment.NewLine}" />
+            <Label Text="通知をする時間帯" FontSize="Micro" TextColor="Black"/>
+            <Picker x:Name="MyPicker3"
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged3">
+                <Picker.Items>
+                    <x:String>（通知をしない）</x:String>
+                    <x:String>0時台</x:String>
+                    <x:String>1時台</x:String>
+                    <x:String>2時台</x:String>
+                    <x:String>3時台</x:String>
+                    <x:String>4時台</x:String>
+                    <x:String>5時台</x:String>
+                    <x:String>6時台</x:String>
+                    <x:String>7時台</x:String>
+                    <x:String>8時台</x:String>
+                    <x:String>9時台</x:String>
+                    <x:String>10時台</x:String>
+                    <x:String>11時台</x:String>
+                    <x:String>12時台</x:String>
+                    <x:String>13時台</x:String>
+                    <x:String>14時台</x:String>
+                    <x:String>15時台</x:String>
+                    <x:String>16時台</x:String>
+                    <x:String>17時台</x:String>
+                    <x:String>18時台</x:String>
+                    <x:String>19時台</x:String>
+                    <x:String>20時台</x:String>
+                    <x:String>21時台</x:String>
+                    <x:String>22時台</x:String>
+                    <x:String>23時台</x:String>
+                </Picker.Items>
+            </Picker>
+            <RelativeLayout Margin="10">
+                <Label Text="当日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="7"/>
+                <CheckBox x:Name="checkBox31"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged31"/>
+                <Label Text="翌日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="47"/>
+                <CheckBox x:Name="checkBox32" Color="{StaticResource Primary}" TranslationY="40" CheckedChanged="OnCheckBoxCheckedChanged32"/>
+                <Label Text="翌々日の予定を通知する" TextColor="Black" TranslationX="30" TranslationY="87"/>
+                <CheckBox x:Name="checkBox33" Color="{StaticResource Primary}" TranslationY="80" CheckedChanged="OnCheckBoxCheckedChanged33"/>
+            </RelativeLayout>
+
+
+            <Label Text="{x:Static sys:Environment.NewLine}" />
+
         </StackLayout>
         </ScrollView>
 
