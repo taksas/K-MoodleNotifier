@@ -20,9 +20,9 @@
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" Clicked="LoginCommand" />
             <Label Text="{x:Static sys:Environment.NewLine}" />
-            <Label Text="通知をする時間帯" FontSize="Micro" TextColor="Black"/>
+            <Label Text="1度目の通知をする時間帯" FontSize="Large" TextColor="Black"/>
             <Picker x:Name="MyPicker1"
-                    SelectedIndexChanged="MyPicker_SelectedIndexChanged1">
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged1" BackgroundColor="{StaticResource Primary}">
                 <Picker.Items>
                     <x:String>（通知をしない）</x:String>
                     <x:String>0時台</x:String>
@@ -60,9 +60,9 @@
                 <CheckBox x:Name="checkBox13" Color="{StaticResource Primary}" TranslationY="80" CheckedChanged="OnCheckBoxCheckedChanged13"/>
             </RelativeLayout>
             <Label Text="{x:Static sys:Environment.NewLine}" />
-            <Label Text="通知をする時間帯" FontSize="Micro" TextColor="Black"/>
+            <Label Text="2度目の通知をする時間帯" FontSize="Large" TextColor="Black"/>
             <Picker x:Name="MyPicker2"
-                    SelectedIndexChanged="MyPicker_SelectedIndexChanged2">
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged2" BackgroundColor="{StaticResource Primary}">
                 <Picker.Items>
                     <x:String>（通知をしない）</x:String>
                     <x:String>0時台</x:String>
@@ -100,9 +100,9 @@
                 <CheckBox x:Name="checkBox23" Color="{StaticResource Primary}" TranslationY="80" CheckedChanged="OnCheckBoxCheckedChanged23"/>
             </RelativeLayout>
             <Label Text="{x:Static sys:Environment.NewLine}" />
-            <Label Text="通知をする時間帯" FontSize="Micro" TextColor="Black"/>
+            <Label Text="3度目の通知をする時間帯" FontSize="Large" TextColor="Black"/>
             <Picker x:Name="MyPicker3"
-                    SelectedIndexChanged="MyPicker_SelectedIndexChanged3">
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged3" BackgroundColor="{StaticResource Primary}">
                 <Picker.Items>
                     <x:String>（通知をしない）</x:String>
                     <x:String>0時台</x:String>
