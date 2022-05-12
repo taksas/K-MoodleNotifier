@@ -52,7 +52,7 @@ public partial class WebViewPage : ContentPage
 
 
         
-        async void webviewNavigating(object sender, WebNavigatingEventArgs e)
+        void webviewNavigating(object sender, WebNavigatingEventArgs e)
         {
             labelLoading.IsVisible = true;
             String uri = e.Url;
