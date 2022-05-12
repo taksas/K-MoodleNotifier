@@ -30,18 +30,49 @@ namespace K_MoodleNotifier.Droid.Workers
         {
 
         }
+
         public override Result DoWork()
         {
-            WorkerStart();
-        
-            if ( DateTime.Now.Hour == 0 )
-            {
-                WorkerStart();
-            }
-            
-            Android.Util.Log.Debug("CalculatorWorker", $"Your T");
+            ParallelWorker();
             return Result.InvokeSuccess();
         }
+
+
+
+
+
+
+
+
+        private async void ParallelWorker() {
+
+            var daytime1 = await SecureStorage.GetAsync("DayTime1");
+            var daytime2 = await SecureStorage.GetAsync("DayTime2");
+            var daytime3 = await SecureStorage.GetAsync("DayTime3");
+
+            if (daytime1 != "-1")
+            {
+                if (DateTime.Now.Hour +"" == daytime1)
+                {
+                    WorkerStart();
+                }
+            }
+            if (daytime2 != "-1")
+            {
+                if (DateTime.Now.Hour + "" == daytime2)
+                {
+                    WorkerStart();
+                }
+            }
+            if (daytime3 != "-1")
+            {
+                if (DateTime.Now.Hour + "" == daytime3)
+                {
+                    WorkerStart();
+                }
+            }
+        }
+
 
         public async void WorkerStart()
         {

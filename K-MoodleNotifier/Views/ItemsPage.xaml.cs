@@ -20,7 +20,7 @@ namespace K_MoodleNotifier.Views
 
         public ItemsPage()
         {
-            
+
             InitializeComponent();
             checker();
         }
@@ -42,6 +42,12 @@ namespace K_MoodleNotifier.Views
             var day31 = await SecureStorage.GetAsync("Day31");
             var day32 = await SecureStorage.GetAsync("Day32");
             var day33 = await SecureStorage.GetAsync("Day33");
+
+            var daytime1 = await SecureStorage.GetAsync("DayTime1");
+            var daytime2 = await SecureStorage.GetAsync("DayTime2");
+            var daytime3 = await SecureStorage.GetAsync("DayTime3");
+
+
 
             if (day11 == "1")
             {
@@ -81,179 +87,282 @@ namespace K_MoodleNotifier.Views
             {
                 checkBox33.IsChecked = true;
             }
-        }
 
 
 
 
 
-        //1st Notify
-        async void OnCheckBoxCheckedChanged11(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
+
+
+
+
+
+            if (daytime1 == "-1")
             {
-                await SecureStorage.SetAsync("Day11", "1");
-                // var text1 =  await SecureStorage.GetAsync("Day1");
-                // Debug.WriteLine(text1);
+                MyPicker1.SelectedIndex = 0;
             }
             else
             {
-                await SecureStorage.SetAsync("Day11", "0");
-                // var text1 = await SecureStorage.GetAsync("Day1");
-                // Debug.WriteLine(text1);
+                for (int i = 0; i < 24; i++)
+                {
+                    if (daytime1 == i+"")
+                    {
+                        MyPicker1.SelectedIndex = i + 1;
+                    }
+                }
             }
-            
-        }
-        async void OnCheckBoxCheckedChanged12(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
+
+            if (daytime2 == "-1")
             {
-                await SecureStorage.SetAsync("Day12", "1");
+                MyPicker2.SelectedIndex = 0;
             }
             else
             {
-                await SecureStorage.SetAsync("Day12", "0");
+                for (int i = 0; i < 24; i++)
+                {
+                    if (daytime2 == i + "")
+                    {
+                        MyPicker2.SelectedIndex = i + 1;
+                    }
+                }
             }
-        }
-        async void OnCheckBoxCheckedChanged13(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
+
+            if (daytime3 == "-1")
             {
-                await SecureStorage.SetAsync("Day13", "1");
+                MyPicker3.SelectedIndex = 0;
             }
             else
             {
-                await SecureStorage.SetAsync("Day13", "0");
+                for (int i = 0; i < 24; i++)
+                {
+                    if (daytime3 == i + "")
+                    {
+                        MyPicker3.SelectedIndex = i + 1;
+                    }
+                }
             }
+
+
         }
 
 
-        private void MyPicker_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-            var val = MyPicker1.Items[MyPicker1.SelectedIndex];
-            DisplayAlert("選択アイテム", val, "OK");
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //2nd Notify
-        async void OnCheckBoxCheckedChanged21(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
+            //1st Notify
+            async void OnCheckBoxCheckedChanged11(object sender, CheckedChangedEventArgs e)
             {
-                await SecureStorage.SetAsync("Day21", "1");
-                // var text1 =  await SecureStorage.GetAsync("Day1");
-                // Debug.WriteLine(text1);
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day11", "1");
+                    // var text1 =  await SecureStorage.GetAsync("Day1");
+                    // Debug.WriteLine(text1);
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day11", "0");
+                    // var text1 = await SecureStorage.GetAsync("Day1");
+                    // Debug.WriteLine(text1);
+                }
+
+            }
+            async void OnCheckBoxCheckedChanged12(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day12", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day12", "0");
+                }
+            }
+            async void OnCheckBoxCheckedChanged13(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day13", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day13", "0");
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //2nd Notify
+            async void OnCheckBoxCheckedChanged21(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day21", "1");
+                    // var text1 =  await SecureStorage.GetAsync("Day1");
+                    // Debug.WriteLine(text1);
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day21", "0");
+                    // var text1 = await SecureStorage.GetAsync("Day1");
+                    // Debug.WriteLine(text1);
+                }
+
+            }
+            async void OnCheckBoxCheckedChanged22(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day22", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day22", "0");
+                }
+            }
+            async void OnCheckBoxCheckedChanged23(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day23", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day23", "0");
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //3rd Notify
+            async void OnCheckBoxCheckedChanged31(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day31", "1");
+                    // var text1 =  await SecureStorage.GetAsync("Day1");
+                    // Debug.WriteLine(text1);
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day31", "0");
+                    // var text1 = await SecureStorage.GetAsync("Day1");
+                    // Debug.WriteLine(text1);
+                }
+
+            }
+            async void OnCheckBoxCheckedChanged32(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day32", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day32", "0");
+                }
+            }
+            async void OnCheckBoxCheckedChanged33(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Day33", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Day33", "0");
+                }
+            }
+
+        
+
+
+
+
+
+
+
+
+
+
+        private async void MyPicker_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            string item = MyPicker1.Items[MyPicker1.SelectedIndex];
+
+            if (item == "（通知をしない）")
+            {
+                await SecureStorage.SetAsync("DayTime1", "-1");
             }
             else
             {
-                await SecureStorage.SetAsync("Day21", "0");
-                // var text1 = await SecureStorage.GetAsync("Day1");
-                // Debug.WriteLine(text1);
+                for (int i = 0; i < 24; i++)
+                {
+                    if (item == i + "時台")
+                    {
+                        await SecureStorage.SetAsync("DayTime1", i+"");
+                    }
+                }
             }
 
         }
-        async void OnCheckBoxCheckedChanged22(object sender, CheckedChangedEventArgs e)
+
+        private async void MyPicker_SelectedIndexChanged2(object sender, EventArgs e)
         {
-            if (e.Value)
+            string item = MyPicker2.Items[MyPicker2.SelectedIndex];
+
+            if (item == "（通知をしない）")
             {
-                await SecureStorage.SetAsync("Day22", "1");
+                await SecureStorage.SetAsync("DayTime2", "-1");
             }
             else
             {
-                await SecureStorage.SetAsync("Day22", "0");
+                for (int i = 0; i < 24; i++)
+                {
+                    if (item == i + "時台")
+                    {
+                        await SecureStorage.SetAsync("DayTime2", i + "");
+                    }
+                }
             }
         }
-        async void OnCheckBoxCheckedChanged23(object sender, CheckedChangedEventArgs e)
+
+        private async void MyPicker_SelectedIndexChanged3(object sender, EventArgs e)
         {
-            if (e.Value)
+            string item = MyPicker3.Items[MyPicker3.SelectedIndex];
+
+            if (item == "（通知をしない）")
             {
-                await SecureStorage.SetAsync("Day23", "1");
+                await SecureStorage.SetAsync("DayTime3", "-1");
             }
             else
             {
-                await SecureStorage.SetAsync("Day23", "0");
+                for (int i = 0; i < 24; i++)
+                {
+                    if (item == i + "時台")
+                    {
+                        await SecureStorage.SetAsync("DayTime3", i + "");
+                    }
+                }
             }
         }
-
-
-        private void MyPicker_SelectedIndexChanged2(object sender, EventArgs e)
-        {
-            var val = MyPicker2.Items[MyPicker2.SelectedIndex];
-            DisplayAlert("選択アイテム", val, "OK");
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //3rd Notify
-        async void OnCheckBoxCheckedChanged31(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                await SecureStorage.SetAsync("Day31", "1");
-                // var text1 =  await SecureStorage.GetAsync("Day1");
-                // Debug.WriteLine(text1);
-            }
-            else
-            {
-                await SecureStorage.SetAsync("Day31", "0");
-                // var text1 = await SecureStorage.GetAsync("Day1");
-                // Debug.WriteLine(text1);
-            }
-
-        }
-        async void OnCheckBoxCheckedChanged32(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                await SecureStorage.SetAsync("Day32", "1");
-            }
-            else
-            {
-                await SecureStorage.SetAsync("Day32", "0");
-            }
-        }
-        async void OnCheckBoxCheckedChanged33(object sender, CheckedChangedEventArgs e)
-        {
-            if (e.Value)
-            {
-                await SecureStorage.SetAsync("Day33", "1");
-            }
-            else
-            {
-                await SecureStorage.SetAsync("Day33", "0");
-            }
-        }
-
-
-        private void MyPicker_SelectedIndexChanged3(object sender, EventArgs e)
-        {
-            var val = MyPicker3.Items[MyPicker3.SelectedIndex];
-            DisplayAlert("選択アイテム", val, "OK");
-        }
-
     }
 }
