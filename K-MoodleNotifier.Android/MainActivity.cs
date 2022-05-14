@@ -26,7 +26,7 @@ namespace K_MoodleNotifier.Droid
             WorkManager manager = WorkManager.GetInstance(this);
             manager.CancelAllWork();
 
-            PeriodicWorkRequest NotifyWorkRequest = PeriodicWorkRequest.Builder.From<NotifyWorker>(TimeSpan.FromMinutes(15)).Build();
+            PeriodicWorkRequest NotifyWorkRequest = PeriodicWorkRequest.Builder.From<NotifyWorker>(TimeSpan.FromMinutes(60)).Build();
 
             WorkManager.Instance.Enqueue(NotifyWorkRequest);
 
