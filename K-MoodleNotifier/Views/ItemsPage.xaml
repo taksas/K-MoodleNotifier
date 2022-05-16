@@ -27,8 +27,8 @@
             </RelativeLayout>
 
             <Label Text="イベントの時間が来たら通知を自動削除" TextColor="Black" FontSize="Medium" />
-            <Picker x:Name="MyPicker0"
-                    SelectedIndexChanged="MyPicker_SelectedIndexChanged0" BackgroundColor="{StaticResource Primary}">
+            <Picker x:Name="MyPicker02"
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged02" BackgroundColor="{StaticResource Primary}">
                 <Picker.Items>
                     <x:String>（自動で削除しない）</x:String>
                     <x:String>イベント終了と同時</x:String>
