@@ -95,7 +95,7 @@ namespace K_MoodleNotifier.ViewModels
                                        password = await SecureStorage.GetAsync("desc")
                                    });
 
-            Debug.WriteLine(document.Title);
+            //Debug.WriteLine(document.Title);
             try
             {
                                        var classpList = document.GetElementsByClassName("name d-inline-block");
@@ -122,6 +122,8 @@ namespace K_MoodleNotifier.ViewModels
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
+                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
+                        //Debug.WriteLine(c1time);
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                         localNotificationsService.ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
                     }
