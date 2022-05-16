@@ -25,7 +25,7 @@
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
                 <Label Text="香川大学Moodleカレンダー通知アプリ" FontSize="Title" TextColor="Black"/>
-                <Label Text="バージョン1.1 (2022/05/14)" FontSize="20" TextColor="Black"/>
+                <Label Text="バージョン1.2 (2022/05/18)" FontSize="20" TextColor="Black"/>
                 <Label Text="利用規約やライセンスはこちらから確認できます。" FontSize="16" Padding="0,0,0,0" TextColor="Black"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
