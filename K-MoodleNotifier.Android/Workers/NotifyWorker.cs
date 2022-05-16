@@ -18,8 +18,8 @@ namespace K_MoodleNotifier.Droid.Workers
     internal class NotifyWorker : Worker
     {
         private const string CHANNEL_ID = "local_notifications_channel";
-        private const string CHANNEL_NAME = "Notifications";
-        private const string CHANNEL_DESCRIPTION = "Local and push notifications messages appear in this channel";
+        private const string CHANNEL_NAME = "香川大学Moodle カレンダーの通知";
+        private const string CHANNEL_DESCRIPTION = "香川大学Moodleのカレンダーから今日、明日、明後日の予定を通知します。";
 
         private int notificationId = -1;
         private const string TITLE_KEY = "title";
@@ -54,25 +54,41 @@ namespace K_MoodleNotifier.Droid.Workers
             {
                 if (DateTime.Now.Hour +"" == daytime1)
                 {
+                    NotifyCanceller();
                     WorkerStart(1);
+                    
                 }
             }
             if (daytime2 != "-1")
             {
                 if (DateTime.Now.Hour + "" == daytime2)
                 {
+                    NotifyCanceller();
                     WorkerStart(2);
+                    
                 }
             }
             if (daytime3 != "-1")
             {
                 if (DateTime.Now.Hour + "" == daytime3)
                 {
+                    NotifyCanceller();
                     WorkerStart(3);
+                    
                 }
             }
         }
 
+
+        public void NotifyCanceller()
+        {
+            var feature01 = await SecureStorage.GetAsync("Feature01");
+            if ( feature01 )
+            {
+                NotificationManagerCompat.from(applicationContext).cancelAll();
+            }
+        }
+        
 
         public async void WorkerStart(int n)
         {
