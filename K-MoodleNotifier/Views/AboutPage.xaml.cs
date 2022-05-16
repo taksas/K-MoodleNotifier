@@ -23,15 +23,15 @@ namespace K_MoodleNotifier.Views
             InitializeComponent();
         }
 
-        public async void Initializer()
+        public void Initializer()
         {
             DayChecker();
             ParallelChecker();
             GeneralChecker();
         }
-        
-        
-        
+
+
+
         public async void DayChecker()
         {
             var day11 = await SecureStorage.GetAsync("Day11");
@@ -111,8 +111,8 @@ namespace K_MoodleNotifier.Views
 
 
         }
-        
-        
+
+
         public async void GeneralChecker()
         {
             var feature01 = await SecureStorage.GetAsync("Feature01");
@@ -126,10 +126,11 @@ namespace K_MoodleNotifier.Views
             {
                 await SecureStorage.SetAsync("Feature02", "-1");
             }
-            
-        
-        
+
+
+
+        }
+
+
     }
-
-
 }

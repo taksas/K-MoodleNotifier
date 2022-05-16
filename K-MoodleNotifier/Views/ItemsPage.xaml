@@ -22,7 +22,7 @@
             <Label Text="{x:Static sys:Environment.NewLine}" />
             <Label Text="全体設定" FontSize="Large" TextColor="Black"/>
             <RelativeLayout>
-                <Label Text="通知時、直前までの通知を削除する" TextColor="Black" TranslationX="30" TranslationY="7"/>
+                <Label Text="新しい通知をする時、通知バーに残っている通知を削除する" TextColor="Black" TranslationX="30" TranslationY="7"/>
                 <CheckBox x:Name="checkBox01"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged01"/>
             </RelativeLayout>
 

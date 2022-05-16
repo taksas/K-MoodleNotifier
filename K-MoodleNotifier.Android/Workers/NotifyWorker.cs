@@ -80,12 +80,12 @@ namespace K_MoodleNotifier.Droid.Workers
         }
 
 
-        public void NotifyCanceller()
+        public async void NotifyCanceller()
         {
             var feature01 = await SecureStorage.GetAsync("Feature01");
-            if ( feature01 )
+            if ( feature01 == "0" )
             {
-                NotificationManagerCompat.from(applicationContext).cancelAll();
+                NotificationManagerCompat.From(AndroidApp.Context).CancelAll();
             }
         }
         
@@ -162,9 +162,10 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
+                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        
-                       ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
+
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
                 }
 
@@ -215,8 +216,9 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
+                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
                 }
 
@@ -284,10 +286,11 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
+                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                         DateTime dtToday = DateTime.Today;
                         DateTime dtDAT = dtToday.AddDays(2);
-                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  -  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
                 }
 
@@ -344,7 +347,7 @@ namespace K_MoodleNotifier.Droid.Workers
             notificationManager.CreateNotificationChannel(channel);
         }
 
-        public void ShowNotification(string title, string message, IDictionary<string, string> data)
+        public void ShowNotification(string title, string message, IDictionary<string, string> data, string c1time)
         {
             if (!isChannelInitialized)
             {
