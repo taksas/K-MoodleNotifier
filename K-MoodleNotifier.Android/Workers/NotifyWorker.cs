@@ -83,7 +83,7 @@ namespace K_MoodleNotifier.Droid.Workers
         public async void NotifyCanceller()
         {
             var feature01 = await SecureStorage.GetAsync("Feature01");
-            if ( feature01 == "0" )
+            if ( feature01 == "1" )
             {
                 NotificationManagerCompat.From(AndroidApp.Context).CancelAll();
             }
@@ -120,6 +120,7 @@ namespace K_MoodleNotifier.Droid.Workers
         {
             var id = await SecureStorage.GetAsync("text");
             var password = await SecureStorage.GetAsync("desc");
+            var feature02 = await SecureStorage.GetAsync("Feature02");
 
 
             //Cookieを有効化?
@@ -162,7 +163,42 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
-                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
+
+
+                        string c1time = "NOTC";
+
+                        var c1time1 = c1.TextContent.Substring(c1.TextContent.Length - 5); // 予定時刻
+                        var c1timeh = (Int32.Parse(c1time1.Substring(0, 2))) - DateTime.Now.Hour;
+                        var c1timem = (Int32.Parse(c1time1.Substring(3, 2))) - DateTime.Now.Minute;
+                        
+                        if (feature02 == "1")
+                        {
+                            c1time = "-1";
+                            int c1timeint = -1;
+                            if (c1timeh >= 0)
+                            {
+                                c1timeint = c1timeh * 60 * 60;
+                                if (c1timem >= 0)
+                                {
+                                    c1timeint += (Int32.Parse(c1time1.Substring(3, 2)) - DateTime.Now.Minute) * 60;
+                                }
+                                else
+                                {
+                                    c1timeint -= (DateTime.Now.Minute - Int32.Parse(c1time1.Substring(3, 2))) * 60;
+                                }
+                            }
+                            if (c1timeint >= 0)
+                            {
+                                c1timeint *= 1000;
+                                c1time = c1timeint.ToString();
+
+                            }
+
+                        }
+
+
+
+
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
 
                         ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
@@ -216,7 +252,7 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
-                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
+                        string c1time = "NOTC";
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                         ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
@@ -286,7 +322,7 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
-                        var c1time = c1.TextContent.Substring(c1.TextContent.Length - 5);
+                        string c1time = "NOTC";
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                         DateTime dtToday = DateTime.Today;
                         DateTime dtDAT = dtToday.AddDays(2);
@@ -366,17 +402,38 @@ namespace K_MoodleNotifier.Droid.Workers
             notificationId++;
 
             var pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, notificationId, intent, PendingIntentFlags.OneShot);
-            var notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
-                                            .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
-                                            .SetSmallIcon(Resource.Drawable.icon_K)
-                                            .SetContentTitle(title)
-                                            .SetContentText(message)
-                                            .SetAutoCancel(true)
-                                            .SetContentIntent(pendingIntent)
-                                            .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
 
-            var notificationManager = NotificationManagerCompat.From(AndroidApp.Context);
-            notificationManager.Notify(notificationId, notificationBuilder.Build());
+
+            var notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
+                                .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
+                                .SetSmallIcon(Resource.Drawable.icon_K)
+                                .SetContentTitle(title)
+                                .SetContentText(message)
+                                .SetAutoCancel(true)
+                                .SetContentIntent(pendingIntent)
+                                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
+
+
+            if (c1time != "NOTC" && c1time != "-1")
+            {
+                notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
+                                                .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
+                                                .SetSmallIcon(Resource.Drawable.icon_K)
+                                                .SetContentTitle(title)
+                                                .SetContentText(message)
+                                                .SetAutoCancel(true)
+                                                .SetContentIntent(pendingIntent)
+                                                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate)
+                                                .SetTimeoutAfter(Convert.ToInt64(c1time));
+
+
+            }
+
+            if (c1time != "-1")
+            {
+                var notificationManager = NotificationManagerCompat.From(AndroidApp.Context);
+                notificationManager.Notify(notificationId, notificationBuilder.Build());
+            }
         }
     }
 
