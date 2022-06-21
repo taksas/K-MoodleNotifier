@@ -47,6 +47,9 @@ namespace K_MoodleNotifier.Views
             var daytime2 = await SecureStorage.GetAsync("DayTime2");
             var daytime3 = await SecureStorage.GetAsync("DayTime3");
 
+            var feature01 = await SecureStorage.GetAsync("Feature01");
+            var feature02 = await SecureStorage.GetAsync("Feature02");
+
 
 
             if (day11 == "1")
@@ -90,7 +93,10 @@ namespace K_MoodleNotifier.Views
 
 
 
-
+            if (feature01 == "1")
+            {
+                checkBox01.IsChecked = true;
+            }
 
 
 
@@ -143,7 +149,50 @@ namespace K_MoodleNotifier.Views
             }
 
 
+
+            if (feature02 == "-1")
+            {
+                MyPicker02.SelectedIndex = 0;
+            }
+            else
+            {
+                for (int i = 0; i < 24; i++)
+                {
+                    if (feature02 == i+"")
+                    {
+                        MyPicker02.SelectedIndex = i + 1;
+                    }
+                }
+            }
+
+
+
+
+
         }
+
+
+
+
+
+
+
+            async void OnCheckBoxCheckedChanged01(object sender, CheckedChangedEventArgs e)
+            {
+                if (e.Value)
+                {
+                    await SecureStorage.SetAsync("Feature01", "1");
+                }
+                else
+                {
+                    await SecureStorage.SetAsync("Feature01", "0");
+                }
+
+            }
+
+
+
+
 
 
             //1st Notify
@@ -185,6 +234,8 @@ namespace K_MoodleNotifier.Views
                     await SecureStorage.SetAsync("Day13", "0");
                 }
             }
+
+
 
 
 
@@ -295,6 +346,46 @@ namespace K_MoodleNotifier.Views
 
         
 
+
+
+
+
+
+
+
+
+
+
+        private async void MyPicker_SelectedIndexChanged02(object sender, EventArgs e)
+        {
+            string item = MyPicker02.Items[MyPicker02.SelectedIndex];
+
+            if (item == "（自動で削除しない）")
+            {
+                await SecureStorage.SetAsync("Feature02", "-1");
+            }
+            else if (item == "イベント終了と同時")
+            {
+                 await SecureStorage.SetAsync("Feature02", "0");
+            }
+            else if (item == "イベント終了10分後")
+            {
+                await SecureStorage.SetAsync("Feature02", "1");
+            }
+            else if (item == "イベント終了30分後")
+            {
+                await SecureStorage.SetAsync("Feature02", "2");
+            }
+            else if (item == "イベント終了1時間後")
+            {
+                await SecureStorage.SetAsync("Feature02", "3");
+            }
+            else if (item == "イベント終了2時間後")
+            {
+                await SecureStorage.SetAsync("Feature02", "4");
+            }
+
+        }
 
 
 

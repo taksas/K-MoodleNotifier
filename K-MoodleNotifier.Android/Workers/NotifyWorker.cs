@@ -18,8 +18,8 @@ namespace K_MoodleNotifier.Droid.Workers
     internal class NotifyWorker : Worker
     {
         private const string CHANNEL_ID = "local_notifications_channel";
-        private const string CHANNEL_NAME = "Notifications";
-        private const string CHANNEL_DESCRIPTION = "Local and push notifications messages appear in this channel";
+        private const string CHANNEL_NAME = "香川大学Moodle カレンダーの通知";
+        private const string CHANNEL_DESCRIPTION = "香川大学Moodleのカレンダーから今日、明日、明後日の予定を通知します。";
 
         private int notificationId = -1;
         private const string TITLE_KEY = "title";
@@ -54,25 +54,41 @@ namespace K_MoodleNotifier.Droid.Workers
             {
                 if (DateTime.Now.Hour +"" == daytime1)
                 {
+                    NotifyCanceller();
                     WorkerStart(1);
+                    
                 }
             }
             if (daytime2 != "-1")
             {
                 if (DateTime.Now.Hour + "" == daytime2)
                 {
+                    NotifyCanceller();
                     WorkerStart(2);
+                    
                 }
             }
             if (daytime3 != "-1")
             {
                 if (DateTime.Now.Hour + "" == daytime3)
                 {
+                    NotifyCanceller();
                     WorkerStart(3);
+                    
                 }
             }
         }
 
+
+        public async void NotifyCanceller()
+        {
+            var feature01 = await SecureStorage.GetAsync("Feature01");
+            if ( feature01 == "1" )
+            {
+                NotificationManagerCompat.From(AndroidApp.Context).CancelAll();
+            }
+        }
+        
 
         public async void WorkerStart(int n)
         {
@@ -104,6 +120,7 @@ namespace K_MoodleNotifier.Droid.Workers
         {
             var id = await SecureStorage.GetAsync("text");
             var password = await SecureStorage.GetAsync("desc");
+            var feature02 = await SecureStorage.GetAsync("Feature02");
 
 
             //Cookieを有効化?
@@ -146,9 +163,73 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
-                        //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
+
+
+                        string c1time = "NOTC";
+
+                        var c1time1 = c1.TextContent.Substring(c1.TextContent.Length - 5); // 予定時刻
+                        var c1timeh = (Int32.Parse(c1time1.Substring(0, 2))) - DateTime.Now.Hour;
+                        var c1timem = (Int32.Parse(c1time1.Substring(3, 2))) - DateTime.Now.Minute;
                         
-                       ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
+                        if (feature02 != "-1")
+                        {
+                            c1time = "-1";
+                            if (c1timeh >= 0)
+                            {
+                                int c1timeint = c1timeh * 60 * 60;
+                                if (c1timem >= 0)
+                                {
+                                    c1timeint += (Int32.Parse(c1time1.Substring(3, 2)) - DateTime.Now.Minute) * 60;
+                                }
+                                else
+                                {
+                                    c1timeint -= (DateTime.Now.Minute - Int32.Parse(c1time1.Substring(3, 2))) * 60;
+                                }
+
+
+
+                                if (feature02 == "1") // item別処理
+                                {
+                                    c1timeint += 10 * 60;
+                                }
+                                else if (feature02 == "2")
+                                {
+                                    c1timeint += 30 * 60;
+                                }
+                                else if (feature02 == "3")
+                                {
+                                    c1timeint += 60 * 60;
+                                }
+                                else if (feature02 == "4")
+                                {
+                                    c1timeint += 120 * 60;
+                                }
+
+
+
+                                if (c1timeint >= 0)  //ミリ秒化
+                                {
+                                    c1timeint *= 1000;
+                                    c1time = c1timeint.ToString();
+
+                                }
+
+                            }
+
+
+
+
+
+
+
+                        }
+
+
+
+
+                        //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
+
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
                 }
 
@@ -199,8 +280,9 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
+                        string c1time = "NOTC";
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
-                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
                 }
 
@@ -268,10 +350,11 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c = classpList[i];
                         var c1 = classpList1[i * 3];
                         var c2 = classpList1[i * 3 + 2];
+                        string c1time = "NOTC";
                         //                Debug.WriteLine($"{c.TextContent} : {c1.TextContent.Replace("本日, ", "")}");
                         DateTime dtToday = DateTime.Today;
                         DateTime dtDAT = dtToday.AddDays(2);
-                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  -  {c2.TextContent} ", new Dictionary<string, string>());
+                        ShowNotification(c.TextContent, $"{c1.TextContent.Replace(dtDAT.ToString("yyyy年 MM月 dd日"), "あさって")}  -  {c2.TextContent} ", new Dictionary<string, string>(), c1time);
                     }
                 }
 
@@ -328,7 +411,7 @@ namespace K_MoodleNotifier.Droid.Workers
             notificationManager.CreateNotificationChannel(channel);
         }
 
-        public void ShowNotification(string title, string message, IDictionary<string, string> data)
+        public void ShowNotification(string title, string message, IDictionary<string, string> data, string c1time)
         {
             if (!isChannelInitialized)
             {
@@ -347,17 +430,38 @@ namespace K_MoodleNotifier.Droid.Workers
             notificationId++;
 
             var pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, notificationId, intent, PendingIntentFlags.OneShot);
-            var notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
-                                            .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
-                                            .SetSmallIcon(Resource.Drawable.icon_K)
-                                            .SetContentTitle(title)
-                                            .SetContentText(message)
-                                            .SetAutoCancel(true)
-                                            .SetContentIntent(pendingIntent)
-                                            .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
 
-            var notificationManager = NotificationManagerCompat.From(AndroidApp.Context);
-            notificationManager.Notify(notificationId, notificationBuilder.Build());
+
+            var notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
+                                .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
+                                .SetSmallIcon(Resource.Drawable.icon_K)
+                                .SetContentTitle(title)
+                                .SetContentText(message)
+                                .SetAutoCancel(true)
+                                .SetContentIntent(pendingIntent)
+                                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
+
+
+            if (c1time != "NOTC" && c1time != "-1")
+            {
+                notificationBuilder = new NotificationCompat.Builder(AndroidApp.Context, CHANNEL_ID)
+                                                .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Mipmap.icon))
+                                                .SetSmallIcon(Resource.Drawable.icon_K)
+                                                .SetContentTitle(title)
+                                                .SetContentText(message)
+                                                .SetAutoCancel(true)
+                                                .SetContentIntent(pendingIntent)
+                                                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate)
+                                                .SetTimeoutAfter(Convert.ToInt64(c1time));
+
+
+            }
+
+            if (c1time != "-1")
+            {
+                var notificationManager = NotificationManagerCompat.From(AndroidApp.Context);
+                notificationManager.Notify(notificationId, notificationBuilder.Build());
+            }
         }
     }
 

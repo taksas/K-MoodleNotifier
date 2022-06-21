@@ -19,11 +19,18 @@ namespace K_MoodleNotifier.Views
 
         public AboutPage()
         {
-
-            DayChecker();
-            ParallelChecker();
+            Initializer();
             InitializeComponent();
         }
+
+        public void Initializer()
+        {
+            DayChecker();
+            ParallelChecker();
+            GeneralChecker();
+        }
+
+
 
         public async void DayChecker()
         {
@@ -104,7 +111,26 @@ namespace K_MoodleNotifier.Views
 
 
         }
+
+
+        public async void GeneralChecker()
+        {
+            var feature01 = await SecureStorage.GetAsync("Feature01");
+            var feature02 = await SecureStorage.GetAsync("Feature02");
+
+            if (feature01 == null)
+            {
+                await SecureStorage.SetAsync("Feature01", "0");
+            }
+            if (feature02 == null)
+            {
+                await SecureStorage.SetAsync("Feature02", "-1");
+            }
+
+
+
+        }
+
+
     }
-
-
 }

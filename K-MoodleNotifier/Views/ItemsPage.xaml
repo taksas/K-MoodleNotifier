@@ -20,6 +20,26 @@
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" Clicked="LoginCommand" />
             <Label Text="{x:Static sys:Environment.NewLine}" />
+            <Label Text="全体設定" FontSize="Large" TextColor="Black"/>
+            <RelativeLayout>
+                <Label Text="新しい通知をする時、通知バーに残っている通知を削除する" TextColor="Black" TranslationX="30" TranslationY="7"/>
+                <CheckBox x:Name="checkBox01"  Color="{StaticResource Primary}" CheckedChanged="OnCheckBoxCheckedChanged01"/>
+            </RelativeLayout>
+
+            <Label Text="イベントの時間が来たら通知を自動削除" TextColor="Black" FontSize="Medium" />
+            <Picker x:Name="MyPicker02"
+                    SelectedIndexChanged="MyPicker_SelectedIndexChanged02" BackgroundColor="{StaticResource Primary}">
+                <Picker.Items>
+                    <x:String>（自動で削除しない）</x:String>
+                    <x:String>イベント終了と同時</x:String>
+                    <x:String>イベント終了10分後</x:String>
+                    <x:String>イベント終了30分後</x:String>
+                    <x:String>イベント終了1時間後</x:String>
+                    <x:String>イベント終了2時間後</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label Text="このオプションをオンにした場合、当日既に終了している予定については通知されなくなります。" FontSize="Small" TextColor="Black"/>
+            <Label Text="{x:Static sys:Environment.NewLine}" />
             <Label Text="1度目の通知をする時間帯" FontSize="Large" TextColor="Black"/>
             <Picker x:Name="MyPicker1"
                     SelectedIndexChanged="MyPicker_SelectedIndexChanged1" BackgroundColor="{StaticResource Primary}">
