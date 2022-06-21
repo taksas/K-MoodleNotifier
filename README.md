@@ -99,3 +99,6 @@ iOS用のDependency Serviceを実装するなど大歓迎です（当方Macを�
 を参照してください。
 <br>
 このプロジェクトはMITライセンスでの公開となります。
+<br>
+<br>
+Google Play and the Google Play logo are trademarks of Google LLC.
