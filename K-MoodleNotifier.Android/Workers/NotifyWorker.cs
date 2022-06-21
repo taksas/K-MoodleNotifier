@@ -171,13 +171,12 @@ namespace K_MoodleNotifier.Droid.Workers
                         var c1timeh = (Int32.Parse(c1time1.Substring(0, 2))) - DateTime.Now.Hour;
                         var c1timem = (Int32.Parse(c1time1.Substring(3, 2))) - DateTime.Now.Minute;
                         
-                        if (feature02 == "1")
+                        if (feature02 != "-1")
                         {
                             c1time = "-1";
-                            int c1timeint = -1;
                             if (c1timeh >= 0)
                             {
-                                c1timeint = c1timeh * 60 * 60;
+                                int c1timeint = c1timeh * 60 * 60;
                                 if (c1timem >= 0)
                                 {
                                     c1timeint += (Int32.Parse(c1time1.Substring(3, 2)) - DateTime.Now.Minute) * 60;
@@ -186,13 +185,42 @@ namespace K_MoodleNotifier.Droid.Workers
                                 {
                                     c1timeint -= (DateTime.Now.Minute - Int32.Parse(c1time1.Substring(3, 2))) * 60;
                                 }
-                            }
-                            if (c1timeint >= 0)
-                            {
-                                c1timeint *= 1000;
-                                c1time = c1timeint.ToString();
+
+
+
+                                if (feature02 == "1") // item別処理
+                                {
+                                    c1timeint += 10 * 60;
+                                }
+                                else if (feature02 == "2")
+                                {
+                                    c1timeint += 30 * 60;
+                                }
+                                else if (feature02 == "3")
+                                {
+                                    c1timeint += 60 * 60;
+                                }
+                                else if (feature02 == "4")
+                                {
+                                    c1timeint += 120 * 60;
+                                }
+
+
+
+                                if (c1timeint >= 0)  //ミリ秒化
+                                {
+                                    c1timeint *= 1000;
+                                    c1time = c1timeint.ToString();
+
+                                }
 
                             }
+
+
+
+
+
+
 
                         }
 

@@ -360,7 +360,7 @@ namespace K_MoodleNotifier.Views
         {
             string item = MyPicker02.Items[MyPicker02.SelectedIndex];
 
-            if (item == "（通知をしない）")
+            if (item == "（自動で削除しない）")
             {
                 await SecureStorage.SetAsync("Feature02", "-1");
             }
